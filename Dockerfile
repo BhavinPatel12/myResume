@@ -1,11 +1,9 @@
-FROM node:21-alpine
-
-COPY package.json /app/
-COPY src /app/
-COPY public /app/
-
+FROM node:latest
+RUN npm install -g nodemon
 WORKDIR /app
+COPY . .
+
 
 RUN npm install
-
-CMD ["node", "app.js"]
+EXPOSE 8080
+CMD ["node", "src/app.js"]
